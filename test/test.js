@@ -8,6 +8,8 @@ var chai = require('chai');
 var should = chai.should();
 chai.use(chaiHttp);
 var expect = chai.expect;
+
+
     describe('Code breaker',function(){
         describe('Funcionalidades',function(){
             codebreaker.setSecret("4321");
@@ -62,29 +64,35 @@ var expect = chai.expect;
         });
 
         
-
-        // describe('Pruebas de servicio', function() {
-        //     codebreaker.setSecret("4321");
-        //     describe('POST', function(){
-        //         it('Should return OK', function(done){
-        //             let req = {secret: "4321"}
-        //             chai.request(app)
-        //                 .post('/setsecreto/')
-        //                 .send(req)
-        //                 .expect(200,done);
-        //         })
-        //     })
-        //     describe('GET', function(){
-        //         it('Should return XXXX', function(done){
-        //             chai.request(app)
-        //                 .get('/adivinarsecreto/4321')
-        //                 .end(function(err,res) {
-        //                     expect(res.statusCode).to.be.equal(200); 
-        //                 }
-        //             );
-        //         });
-        //     });
-        // }); 
+        
+        describe('Pruebas de servicio', function() {
+            describe('POST', function(){
+                it('Should return OK', function(done){
+                    let req = {secret: "4321"}
+                    chai.request(app)
+                        .post('/setsecreto/')
+                        .send(req)
+                        .end(function(err,res){
+                            res.should.have.status(200);
+                            assert.equal(res.text, 'OK');
+                        done();
+                        })
+                })
+            })
+            describe('GET', function(){
+                it('Should return XXXX', function(done){
+                    codebreaker.setSecret("4321");
+                    chai.request(app)
+                        .get('/adivinarsecreto/4321')
+                        .end(function(err,res) {
+                            res.should.have.status(200);
+                            assert.equal(res.text,'XXXX');
+                        done(); 
+                        }
+                    );
+                });
+            });
+        }); 
     });
 
 

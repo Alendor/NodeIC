@@ -4,6 +4,8 @@ var express         = require("express"),
     methodOverride  = require("method-override")
 
 
+
+
 const port = process.env.PORT || 5000;
 
 // Middlewares
@@ -26,3 +28,4 @@ app.use(cb);
 var server = app.listen(port, function() {
   console.log("Node server running on "+ port);
 });
+module.exports = server;
