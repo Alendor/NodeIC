@@ -4,6 +4,8 @@ var express         = require("express"),
     methodOverride  = require("method-override")
 
 
+const port = process.env.PORT || 5000;
+
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,6 +23,6 @@ cb.route('/setsecreto')
 
 app.use(cb);
 // Start server
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(port, function() {
+  console.log("Node server running on"+ port);
 });
