@@ -23,6 +23,6 @@ cb.route('/setsecreto')
 
 app.use(cb);
 // Start server
-app.listen(port, function() {
-  console.log("Node server running on"+ port);
+var server = app.listen(port, function() {
+  console.log("Node server running on "+ port);
 });

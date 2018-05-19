@@ -1,6 +1,13 @@
-var assert = require('assert');
-var codebreaker=require('../domain/cb');
 
+var assert = require('assert');
+var request = require('supertest')
+var codebreaker=require('../domain/cb');
+var chaiHttp = require('chai-http');
+var app = require('../app');
+var chai = require('chai');
+var should = chai.should();
+chai.use(chaiHttp);
+var expect = chai.expect;
     describe('Code breaker',function(){
         describe('Funcionalidades',function(){
             codebreaker.setSecret("4321");
@@ -52,7 +59,32 @@ var codebreaker=require('../domain/cb');
             it('Validacion en general error numeros repetidos',function(){
                 assert.equal(codebreaker.validarCadena("1334"),"La cadena no puede contener digitos repetidos");        
             }); 
-        }); 
+        });
+
+        
+
+        // describe('Pruebas de servicio', function() {
+        //     codebreaker.setSecret("4321");
+        //     describe('POST', function(){
+        //         it('Should return OK', function(done){
+        //             let req = {secret: "4321"}
+        //             chai.request(app)
+        //                 .post('/setsecreto/')
+        //                 .send(req)
+        //                 .expect(200,done);
+        //         })
+        //     })
+        //     describe('GET', function(){
+        //         it('Should return XXXX', function(done){
+        //             chai.request(app)
+        //                 .get('/adivinarsecreto/4321')
+        //                 .end(function(err,res) {
+        //                     expect(res.statusCode).to.be.equal(200); 
+        //                 }
+        //             );
+        //         });
+        //     });
+        // }); 
     });
 
 
