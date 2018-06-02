@@ -4,10 +4,6 @@ var express         = require("express"),
     methodOverride  = require("method-override")
     cors            = require('cors')
 
-
-
-    
-
 const port = process.env.PORT || 5000;
 
 // Middlewares
